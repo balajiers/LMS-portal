@@ -30,13 +30,16 @@ public class Course {
 
     public Course(Long id, String title, String description, User instructor) {
         this.id = id;
-        this.title = title;
-        this.description = description;
         this.instructor = instructor;
+    @NotBlank(message = "Title is required")
+    @Size(max = 100, message = "Title must be at most 100 characters")
+    @Column(nullable = false, length = 100)
+    private String title;
     }
-
-    public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
+    @Size(max = 1000, message = "Description must be at most 1000 characters")
+    @Column(length = 1000)
+    private String description;
     public String getTitle() { return title; }
     public void setTitle(String title) { this.title = title; }
     public String getDescription() { return description; }

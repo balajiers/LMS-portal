@@ -11,12 +11,16 @@ public class Assignment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Title is required")
+    @Size(max = 100, message = "Title must be at most 100 characters")
     @Column(nullable = false, length = 100)
     private String title;
 
+    @Size(max = 1000, message = "Description must be at most 1000 characters")
     @Column(length = 1000)
     private String description;
 
+    @NotNull(message = "Deadline is required")
     @Column(nullable = false)
     private LocalDate deadline;
 

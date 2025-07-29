@@ -21,15 +21,17 @@ public class Submission {
     private Double grade;
 
     public Submission() {}
-
-    public Submission(Long id, User user, Assignment assignment, Double grade) {
-        this.id = id;
         this.user = user;
+    @NotNull(message = "User is required")
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
         this.assignment = assignment;
-        this.grade = grade;
-    }
-
     public Long getId() { return id; }
+    @NotNull(message = "Assignment is required")
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "assignment_id", nullable = false)
+    private Assignment assignment;
     public void setId(Long id) { this.id = id; }
     public User getUser() { return user; }
     public void setUser(User user) { this.user = user; }
